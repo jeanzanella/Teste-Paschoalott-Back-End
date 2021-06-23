@@ -29,7 +29,7 @@ namespace Teste_Paschoalott_Back_End
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-
+            services.AddCors(options => { options.AddDefaultPolicy(p => p.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader()); });
             services.AddControllers();
             services.AddDbContext<TestePaschoalottoContext>(options => options.UseSqlServer(Configuration["DB_CONNECTION"]));
             services.AddTransient<ITituloService, TituloService>();
@@ -45,6 +45,7 @@ namespace Teste_Paschoalott_Back_End
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+                app.UseCors();
                 app.UseSwagger();
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Teste_Paschoalott_Back_End v1"));
             }
