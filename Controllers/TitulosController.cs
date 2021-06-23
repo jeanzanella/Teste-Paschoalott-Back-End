@@ -22,14 +22,14 @@ namespace Teste_Paschoalott_Back_End.Controllers
         }
 
         [HttpGet]
-        [Route("api/Titulo/GetAll")]
+        [Route("GetAll")]
         public IEnumerable<TituloDTO> GetTitulos()
         {
             return _tituloService.GetTitulos();
         }
 
         [HttpPost]
-        [Route("api/AdicionarTitulo")]
+        [Route("AdicionarTitulo")]
         public void AdicionarTitulo(Titulo titulo)
         {
             try
